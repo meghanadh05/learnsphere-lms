@@ -13,8 +13,8 @@ COPY backend/src ./src
 COPY --from=frontend-build /frontend/dist ./src/main/resources/static
 RUN mvn -q -DskipTests package
 
-FROM eclipse-temurin:17-jre-alpine
-RUN addgroup -S app && adduser -S app -G app
+FROM eclipse-temurin:17-jre-jammy
+RUN groupadd --system app && useradd --system --gid app app
 WORKDIR /app
 COPY --from=backend-build /backend/target/learnsphere-*.jar app.jar
 USER app
