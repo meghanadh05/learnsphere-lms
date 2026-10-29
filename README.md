@@ -16,7 +16,7 @@ LearnSphere is a full-stack online learning platform built for the case study re
 - Frontend: React 18, Vite, React Router
 - Backend: Java 17, Spring Boot 3, Spring MVC, Spring Security, Spring Data JPA
 - Database: MySQL 8 (H2 is used only for automated tests)
-- Deployment: Docker, Docker Compose, Railway-compatible configuration
+- Deployment: Docker, Docker Compose, and a Render Blueprint
 
 ## Run with Docker (recommended)
 
@@ -71,9 +71,21 @@ docker compose config
 - `GET /api/dashboard`
 - `GET /api/health`
 
-## Deployment
+## Deployment: Render + Aiven MySQL
 
-The repository includes a multi-stage `Dockerfile` and `railway.toml`. Create a Railway project from this GitHub repository, add a MySQL service, and set the variables documented in `.env.example`. The app listens on Railway's `PORT` automatically.
+The repository includes a multi-stage `Dockerfile` and `render.yaml`. Render builds the React frontend, packages it into the Spring Boot application, and publishes both from a single web service.
+
+1. Create a free Aiven for MySQL service.
+2. In Aiven, open **Quick connect**, select **Java**, and copy the JDBC URI.
+3. In Render, choose **New > Blueprint** and connect this GitHub repository.
+4. Configure the environment variables requested by the Blueprint:
+
+   - `SPRING_DATASOURCE_URL`: Aiven's Java JDBC URI
+   - `SPRING_DATASOURCE_USERNAME`: Aiven service username, usually `avnadmin`
+   - `SPRING_DATASOURCE_PASSWORD`: Aiven service password
+   - `APP_CORS_ALLOWED_ORIGINS`: the final Render URL, for example `https://learnsphere-lms.onrender.com`
+
+`JWT_SECRET` is generated securely by Render. Do not commit database credentials or production secrets to GitHub. The application automatically uses Render's `PORT` value and exposes `/api/health` for deployment health checks.
 
 ## Team details
 
