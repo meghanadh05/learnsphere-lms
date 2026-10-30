@@ -1,7 +1,6 @@
-// Replace these placeholders with the three submission team members.
 export const teamMembers = [
-  { name: 'Team Member 1', rollNumber: 'ROLL-NUMBER-1', initials: '01' },
-  { name: 'Team Member 2', rollNumber: 'ROLL-NUMBER-2', initials: '02' },
-  { name: 'Team Member 3', rollNumber: 'ROLL-NUMBER-3', initials: '03' },
+  { name: 'K. Anusree', rollNumber: '24251A0582', initials: 'KA' },
+  { name: 'K. Gayathri', rollNumber: '24251A0587', initials: 'KG' },
+  { name: 'S. Jyoshitha', rollNumber: '24251A05C9', initials: 'SJ' },
 ]
 
