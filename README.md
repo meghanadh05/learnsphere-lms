@@ -2,6 +2,10 @@
 
 LearnSphere is a full-stack online learning platform built for the case study requirement. It uses React for reusable course, quiz, and dashboard interfaces; Spring Boot/Spring MVC for authentication, enrollment, and progress logic; and MySQL for persistence.
 
+**Live demo:** [https://learnsphere-lms-f0e3.onrender.com](https://learnsphere-lms-f0e3.onrender.com)
+
+**GitHub repository:** [https://github.com/meghanadh05/learnsphere-lms](https://github.com/meghanadh05/learnsphere-lms)
+
 ## Features
 
 - Student registration and login with JWT authentication
@@ -83,7 +87,7 @@ The repository includes a multi-stage `Dockerfile` and `render.yaml`. Render bui
    - `SPRING_DATASOURCE_URL`: Aiven's Java JDBC URI
    - `SPRING_DATASOURCE_USERNAME`: Aiven service username, usually `avnadmin`
    - `SPRING_DATASOURCE_PASSWORD`: Aiven service password
-   - `APP_CORS_ALLOWED_ORIGINS`: the final Render URL, for example `https://learnsphere-lms.onrender.com`
+   - `APP_CORS_ALLOWED_ORIGINS`: the deployed URL, `https://learnsphere-lms-f0e3.onrender.com`
 
 `JWT_SECRET` is generated securely by Render. Do not commit database credentials or production secrets to GitHub. The application automatically uses Render's `PORT` value and exposes `/api/health` for deployment health checks.
 
